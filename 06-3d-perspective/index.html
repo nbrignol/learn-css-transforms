@@ -11,6 +11,8 @@
 </head>
 <body>
 <main>
+  <nav class="nav-haut"><a href="../index.html">← Sommaire</a></nav>
+
   <h1>matrix3d() et la perspective</h1>
   <p>On ajoute un axe z, qui pointe vers toi. La matrice passe à 4×4 et se lit toujours colonne par colonne : où vont les axes x, y et z, puis où va l’origine. La dernière ligne, figée à 0 0 1 en 2D, sert maintenant à la perspective.</p>
 
@@ -52,6 +54,7 @@
   <h2>Ce que le navigateur renvoie</h2>
   <div class="panneau"><span class="mono" id="lu"></span></div>
   <p>Ici, le navigateur reçoit la version avec les fonctions et la convertit lui-même : on retrouve les mêmes 16 valeurs que dans le matrix3d() ci-dessus, aux arrondis près.</p>
+  <nav class="nav-bas"><a class="prec" href="../05-composition/index.html">← Précédent : Étape 5 · Composer les transformations</a><a class="suiv" href="../07-editeur/index.html">Suivant : Étape 7 · Éditeur de matrices →</a></nav>
 </main>
 <script src="script.js"></script>
 </body>

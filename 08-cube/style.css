@@ -81,3 +81,10 @@
   .css { color: var(--accent); font-weight: 600; }
   .pastille { display: inline-block; width: .7rem; height: .7rem; border-radius: 2px; margin-right: .3rem; vertical-align: baseline; }
   @media (prefers-reduced-motion: reduce) { .face { transition: none; } }
+
+/* navigation entre chapitres */
+.nav-haut { margin: 0 0 1rem; }
+.nav-bas { margin: 2rem 0 0; display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+.nav-bas .suiv { margin-left: auto; text-align: right; }
+.nav-haut a, .nav-bas a { color: var(--accent, #2f5bd3); text-decoration: none; font-weight: 600; }
+.nav-haut a:hover, .nav-bas a:hover { text-decoration: underline; }

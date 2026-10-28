@@ -11,6 +11,8 @@
 </head>
 <body>
 <main>
+  <nav class="nav-haut"><a href="../index.html">← Sommaire</a></nav>
+
   <h1>Un cube en six plans</h1>
   <p>Six div à plat, disposées en patron de cube. Chacune reçoit un matrix3d() qui la plie à sa place, et le conteneur reçoit un second matrix3d() pour faire tourner l’ensemble. La perspective est portée par la scène.</p>
 
@@ -34,6 +36,7 @@
   <h2>Les six faces</h2>
   <p>Chaque face combine trois choses : la ramener de sa place dans le patron vers le centre du cube, la tourner vers sa direction, puis l’avancer d’une demi-arête. La colonne « origine » contient le résultat de ce trajet.</p>
   <div class="panneau"><span class="mono" id="cssFaces"></span></div>
+  <nav class="nav-bas"><a class="prec" href="../07-editeur/index.html">← Précédent : Étape 7 · Éditeur de matrices</a><a class="suiv" href="../09-tuiles/index.html">Suivant : Démo · Six tuiles : grille, cercle, anneau →</a></nav>
 </main>
 <script src="script.js"></script>
 </body>
