@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>matrix() : la translation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <h1>Translation avec matrix()</h1>
+  <p>Le cadre pointillé montre la position d’origine. La boîte colorée reçoit la matrice. Seuls e et f changent : chaque point subit le même décalage, la forme reste intacte.</p>
+
+  <div class="stage" aria-label="Zone de démonstration quadrillée, un grand carreau vaut 100 pixels">
+    <div class="boite fantome"><span class="centre"></span></div>
+    <div class="boite deplacee" id="boite"><span class="centre"></span></div>
+  </div>
+
+  <div class="formule" aria-live="polite">
+    <span class="mono css" id="css">transform: matrix(1, 0, 0, 1, 80, 30);</span>
+    <span class="mono" id="eq">x′ = x + 80
+y′ = y + 30</span>
+  </div>
+
+  <div class="controles">
+    <label><span>e (horizontal)</span><input type="range" id="e" min="-80" max="300" value="80"><span class="mono" id="ev">80</span></label>
+    <label><span>f (vertical)</span><input type="range" id="f" min="-80" max="120" value="30"><span class="mono" id="fv">30</span></label>
+    <div class="actions">
+      <button class="principal" id="identite">Revenir à l’identité</button>
+      <button id="exemple">Revenir à l’exemple (80, 30)</button>
+    </div>
+  </div>
+
+  <p class="legende">Un petit carreau vaut 10 px, un grand 100 px. Le point au centre de chaque boîte est l’origine (0, 0) de la transformation.</p>
+</main>
+<script src="script.js"></script>
+</body>
+</html>

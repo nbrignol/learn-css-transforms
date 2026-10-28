@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Un cube en six plans avec matrix3d()</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <h1>Un cube en six plans</h1>
+  <p>Six div à plat, disposées en patron de cube. Chacune reçoit un matrix3d() qui la plie à sa place, et le conteneur reçoit un second matrix3d() pour faire tourner l’ensemble. La perspective est portée par la scène.</p>
+
+  <div class="scene" id="scene" aria-label="Scène 3D contenant le cube">
+    <div class="cube" id="cube"></div>
+  </div>
+
+  <div class="controles">
+    <label class="curseur"><span>Rotation H</span><input type="range" id="h" min="-180" max="180" step="1" value="-30"><span class="mono" id="hv"></span></label>
+    <label class="curseur"><span>Rotation V</span><input type="range" id="v" min="-90" max="90" step="1" value="-20"><span class="mono" id="vv"></span></label>
+    <label class="curseur"><span>Perspective</span><input type="range" id="p" min="150" max="2000" step="10" value="600"><span class="mono" id="pv"></span></label>
+    <div class="actions">
+      <button class="principal" id="plat" aria-pressed="false">Mettre les faces à plat</button>
+      <button id="reset">Vue de face</button>
+    </div>
+  </div>
+
+  <h2>Le conteneur : la rotation de l’ensemble</h2>
+  <div class="panneau"><span class="mono css" id="cssCube"></span></div>
+
+  <h2>Les six faces</h2>
+  <p>Chaque face combine trois choses : la ramener de sa place dans le patron vers le centre du cube, la tourner vers sa direction, puis l’avancer d’une demi-arête. La colonne « origine » contient le résultat de ce trajet.</p>
+  <div class="panneau"><span class="mono" id="cssFaces"></span></div>
+</main>
+<script src="script.js"></script>
+</body>
+</html>

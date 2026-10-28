@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>matrix3d() et la perspective</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <h1>matrix3d() et la perspective</h1>
+  <p>On ajoute un axe z, qui pointe vers toi. La matrice passe à 4×4 et se lit toujours colonne par colonne : où vont les axes x, y et z, puis où va l’origine. La dernière ligne, figée à 0 0 1 en 2D, sert maintenant à la perspective.</p>
+
+  <div class="stage" aria-label="Zone de démonstration quadrillée">
+    <div class="boite fantome"></div>
+    <div class="boite deplacee" id="boite"><span class="lettre">F</span><span class="coin"></span></div>
+    <div class="boite mesure" id="mesure" aria-hidden="true"></div>
+  </div>
+
+  <div class="controles">
+    <label class="curseur"><span>rotateX</span><input type="range" id="rx" min="-80" max="80" step="1" value="0"><span class="mono" id="rxv"></span></label>
+    <label class="curseur"><span>rotateY</span><input type="range" id="ry" min="-180" max="180" step="1" value="45"><span class="mono" id="ryv"></span></label>
+    <label class="curseur"><span>rotateZ</span><input type="range" id="rz" min="-180" max="180" step="1" value="0"><span class="mono" id="rzv"></span></label>
+    <label class="curseur"><span>translateZ</span><input type="range" id="tz" min="-400" max="200" step="10" value="0"><span class="mono" id="tzv"></span></label>
+    <label class="curseur"><span>perspective</span><input type="range" id="p" min="200" max="1500" step="10" value="500"><span class="mono" id="pv"></span></label>
+    <label class="case"><input type="checkbox" id="avecP" checked> Activer la perspective (ligne rose de la matrice)</label>
+    <div class="actions">
+      <button data-v="0,0,0,0">Identité</button>
+      <button data-v="0,45,0,0">Porte entrouverte</button>
+      <button data-v="55,0,0,0">Couchée vers l’arrière</button>
+      <button data-v="0,0,0,150">Approcher</button>
+      <button data-v="0,0,0,-300">Éloigner</button>
+      <button data-v="20,160,0,0">Voir le dos</button>
+    </div>
+  </div>
+
+  <div class="panneau" style="margin-top:1.25rem" aria-live="polite">
+    <span class="mono css" id="css"></span>
+    <span class="mono" id="mat"></span>
+    <div class="note" id="note"></div>
+  </div>
+
+  <h2>La division par w</h2>
+  <div class="panneau">
+    <span class="mono" id="coin"></span>
+  </div>
+  <p>Le point rose est le coin haut droit de la carte. Le navigateur calcule (x, y, z, w) avec la matrice, puis divise x et y par w. Plus un point est proche de toi, plus w est petit, et plus le point s’écarte du centre : c’est ce qui crée l’effet de profondeur.</p>
+
+  <h2>Ce que le navigateur renvoie</h2>
+  <div class="panneau"><span class="mono" id="lu"></span></div>
+  <p>Ici, le navigateur reçoit la version avec les fonctions et la convertit lui-même : on retrouve les mêmes 16 valeurs que dans le matrix3d() ci-dessus, aux arrondis près.</p>
+</main>
+<script src="script.js"></script>
+</body>
+</html>

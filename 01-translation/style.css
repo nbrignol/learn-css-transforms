@@ -1,0 +1,85 @@
+  :root {
+    --paper: #f3f6fb;
+    --grid: #d6e0ee;
+    --grid-strong: #b7c7de;
+    --ink: #1c2b45;
+    --muted: #5b6b85;
+    --box: #ff7f50;
+    --ghost: #8a97ad;
+    --panel: #ffffff;
+    --accent: #2f5bd3;
+    color-scheme: light;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #121a28; --grid: #1f2b40; --grid-strong: #2d3d58;
+      --ink: #e4ebf7; --muted: #9aa8c0; --box: #ff8a60; --ghost: #7d8ba3;
+      --panel: #19233a; --accent: #7fa2ff; color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #121a28; --grid: #1f2b40; --grid-strong: #2d3d58;
+    --ink: #e4ebf7; --muted: #9aa8c0; --box: #ff8a60; --ghost: #7d8ba3;
+    --panel: #19233a; --accent: #7fa2ff; color-scheme: dark;
+  }
+  *, *::before, *::after { box-sizing: inherit; }
+  html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+  body {
+    margin: 0; background: var(--paper); color: var(--ink);
+    font-family: "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-size: 17px; line-height: 1.55;
+  }
+  main { max-width: 640px; margin: 0 auto; padding: 2.5rem 1.25rem 3rem; }
+  h1 { font-size: 1.9rem; line-height: 1.2; margin: 0 0 .5rem; font-weight: 600; }
+  p { margin: 0 0 1rem; color: var(--muted); max-width: 60ch; }
+  code, .mono { font-family: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace; }
+
+  .stage {
+    position: relative; width: 100%; height: 300px; margin: 1.5rem 0 1rem;
+    border: 1px solid var(--grid-strong); border-radius: 6px; overflow: hidden;
+    background-color: var(--panel);
+    background-image:
+      linear-gradient(var(--grid-strong) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-strong) 1px, transparent 1px),
+      linear-gradient(var(--grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size: 100px 100px, 100px 100px, 10px 10px, 10px 10px;
+    background-position: -1px -1px;
+  }
+  .boite { position: absolute; top: 80px; left: 80px; width: 100px; height: 100px; }
+  .fantome { border: 2px dashed var(--ghost); }
+  .deplacee {
+    background: var(--box); opacity: .92;
+    transform: matrix(1, 0, 0, 1, 80, 30);
+    transition: transform .35s ease;
+  }
+  .centre {
+    position: absolute; width: 8px; height: 8px; margin: -4px 0 0 -4px;
+    border-radius: 50%; left: 50%; top: 50%;
+  }
+  .fantome .centre { background: var(--ghost); }
+  .deplacee .centre { background: var(--ink); }
+
+  .formule {
+    background: var(--panel); border: 1px solid var(--grid-strong); border-radius: 6px;
+    padding: 1rem 1.1rem; margin-bottom: 1.25rem; overflow-x: auto;
+  }
+  .formule .mono { font-size: .95rem; white-space: pre; display: block; }
+  .formule .css { color: var(--accent); font-weight: 600; margin-bottom: .5rem; }
+
+  .controles { display: grid; gap: .9rem; }
+  label { display: grid; grid-template-columns: 6.5rem 1fr 3.5rem; align-items: center; gap: .75rem; }
+  label span:last-child { text-align: right; }
+  input[type="range"] { width: 100%; accent-color: var(--accent); }
+  .actions { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: .4rem; }
+  button {
+    font: inherit; font-size: .95rem; padding: .5rem .9rem; border-radius: 6px; cursor: pointer;
+    border: 1px solid var(--accent); background: transparent; color: var(--accent);
+  }
+  button.principal { background: var(--accent); color: var(--panel); }
+  button:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .legende { font-size: .9rem; margin-top: 1rem; }
+  @media (prefers-reduced-motion: reduce) { .deplacee { transition: none; } }

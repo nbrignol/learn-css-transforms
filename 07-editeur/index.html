@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Éditeur de matrices CSS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <h1>Éditeur de matrices CSS</h1>
+  <p>Tout ce qu’on a vu, réuni en un seul outil. Modifie directement les valeurs de la matrice : la boîte, les flèches des colonnes, le déterminant et la décomposition en fonctions CSS suivent en direct.</p>
+
+  <div class="onglets" role="tablist">
+    <button role="tab" id="tab2d" aria-selected="true" aria-controls="vue2d">2D · matrix()</button>
+    <button role="tab" id="tab3d" aria-selected="false" aria-controls="vue3d">3D · matrix3d()</button>
+  </div>
+
+  <!-- ===================== 2D ===================== -->
+  <section class="vue" id="vue2d" role="tabpanel" aria-labelledby="tab2d">
+    <div class="stage" id="stage2d" aria-label="Zone de démonstration 2D">
+      <div class="boite fantome"></div>
+      <div class="boite deplacee" id="boite2d">
+        <span class="lettre">F</span><span class="vec vec-x"></span><span class="vec vec-y"></span>
+      </div>
+      <div class="boite preuve" id="preuve2d"></div>
+    </div>
+
+    <div class="valeurs" id="valeurs2d"></div>
+
+    <div class="actions" id="presets2d">
+      <button class="btn" data-m="1,0,0,1,0,0">Identité</button>
+      <button class="btn" data-m="1,0,0,1,80,30">Translation</button>
+      <button class="btn" data-m="2,0,0,1,0,0">Étirement</button>
+      <button class="btn" data-m="-1,0,0,1,0,0">Miroir</button>
+      <button class="btn" data-m="1,0,0.58,1,0,0">skewX 30°</button>
+      <button class="btn" data-m="0.866,0.5,-0.5,0.866,0,0">Rotation 30°</button>
+      <button class="btn" data-m="1,1,-1,1,0,0">Rotation 45° × √2</button>
+      <button class="btn" data-m="1.2,0.3,0.6,0.8,60,-40">Un peu de tout</button>
+      <button class="btn" data-m="1,1,1,1,0,0">Aplatie</button>
+    </div>
+    <label class="case"><input type="checkbox" id="prouver2d" checked> Superposer la décomposition (cadre rose) pour vérifier</label>
+
+    <div class="panneau"><span class="mono css" id="css2d"></span></div>
+
+    <h2>Lecture de la matrice</h2>
+    <div class="panneau">
+      <span class="mono" id="lecture2d"></span>
+      <div class="note" id="etat2d"></div>
+    </div>
+
+    <h2>Décomposition en fonctions</h2>
+    <div class="panneau">
+      <span class="mono" id="decomp2d"></span>
+      <div class="note" id="decompNote"></div>
+    </div>
+  </section>
+
+  <!-- ===================== 3D ===================== -->
+  <section class="vue" id="vue3d" role="tabpanel" aria-labelledby="tab3d" hidden>
+    <div class="stage" aria-label="Zone de démonstration 3D">
+      <div class="boite grande fantome"></div>
+      <div class="boite grande deplacee" id="boite3d"><span class="lettre">F</span><span class="coin"></span></div>
+    </div>
+
+    <p>Chaque case affiche sa position dans la liste de matrix3d() (le petit numéro). La grille est présentée comme en maths, mais on remplit colonne par colonne. La ligne rose est celle de w, la perspective.</p>
+    <div class="panneau"><div class="grille" id="grille3d"></div></div>
+
+    <div class="actions" id="presets3d">
+      <button class="btn" data-k="id">Identité</button>
+      <button class="btn" data-k="ry">rotateY 45° + perspective</button>
+      <button class="btn" data-k="rx">rotateX 55° + perspective</button>
+      <button class="btn" data-k="persp">Perspective seule, avancée de 150 px</button>
+      <button class="btn" data-k="from2d">Reprendre la matrice 2D</button>
+    </div>
+
+    <div class="panneau"><span class="mono css" id="css3d"></span></div>
+
+    <h2>La division par w</h2>
+    <div class="panneau"><span class="mono" id="coin3d"></span></div>
+  </section>
+</main>
+<script src="script.js"></script>
+</body>
+</html>

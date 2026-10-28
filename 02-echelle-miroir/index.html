@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>matrix() : échelle et miroir</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <h1>Échelle et miroir avec matrix()</h1>
+  <p>On ne touche qu’à a et d. La flèche bleue montre où va le pas vers la droite (première colonne a, b), la verte où va le pas vers le bas (deuxième colonne c, d). La lettre F révèle les retournements.</p>
+
+  <div class="stage" aria-label="Zone de démonstration quadrillée, un grand carreau vaut 100 pixels">
+    <div class="boite fantome"></div>
+    <div class="boite deplacee" id="boite">
+      <span class="lettre">F</span>
+      <span class="vec vec-x"></span>
+      <span class="vec vec-y"></span>
+    </div>
+  </div>
+
+  <div class="formule" aria-live="polite">
+    <span class="mono css" id="css">transform: matrix(1, 0, 0, 1, 0, 0);</span>
+    <span class="mono" id="mat"></span>
+    <span class="mono" id="eq"></span>
+    <span class="etat" id="etat"></span>
+  </div>
+
+  <div class="controles">
+    <label><span>a (horizontal)</span><input type="range" id="a" min="-2" max="2" step="0.1" value="1"><span class="mono" id="av">1</span></label>
+    <label><span>d (vertical)</span><input type="range" id="d" min="-2" max="2" step="0.1" value="1"><span class="mono" id="dv">1</span></label>
+    <div class="actions" id="presets">
+      <button data-a="1" data-d="1">Identité</button>
+      <button data-a="2" data-d="1">Étirer ×2</button>
+      <button data-a="0.5" data-d="0.5">Réduire de moitié</button>
+      <button data-a="-1" data-d="1">Miroir horizontal</button>
+      <button data-a="1" data-d="-1">Miroir vertical</button>
+      <button data-a="-1" data-d="-1">Les deux miroirs</button>
+      <button data-a="0" data-d="1">Écraser (a = 0)</button>
+    </div>
+  </div>
+
+  <p class="legende">La transformation se fait autour du centre de la boîte, l’origine par défaut. Un petit carreau vaut 10 px, un grand 100 px.</p>
+</main>
+<script src="script.js"></script>
+</body>
+</html>

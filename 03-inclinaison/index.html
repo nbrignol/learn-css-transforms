@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>matrix() : l’inclinaison</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <h1>L’inclinaison avec matrix()</h1>
+  <p>On garde a = d = 1 et on joue sur b et c. La flèche bleue (colonne a, b) penche quand b change : les bords horizontaux s’inclinent. La verte (colonne c, d) penche quand c change : ce sont les bords verticaux qui s’inclinent.</p>
+
+  <div class="stage" aria-label="Zone de démonstration quadrillée, un grand carreau vaut 100 pixels">
+    <div class="boite fantome"></div>
+    <div class="boite deplacee" id="boite">
+      <span class="lettre">F</span>
+      <span class="vec vec-x"></span>
+      <span class="vec vec-y"></span>
+    </div>
+  </div>
+
+  <div class="formule" aria-live="polite">
+    <span class="mono css" id="css"></span>
+    <span class="mono" id="mat"></span>
+    <span class="mono" id="eq"></span>
+    <span class="etat" id="etat"></span>
+  </div>
+
+  <div class="controles">
+    <label><span>b</span><input type="range" id="b" min="-1.5" max="1.5" step="0.01" value="0"><span class="mono" id="bv">0</span></label>
+    <label><span>c</span><input type="range" id="c" min="-1.5" max="1.5" step="0.01" value="0"><span class="mono" id="cv">0</span></label>
+    <div class="actions" id="presets">
+      <button data-b="0" data-c="0">Identité</button>
+      <button data-b="0" data-c="0.58">skewX(30°)</button>
+      <button data-b="0.58" data-c="0">skewY(30°)</button>
+      <button data-b="0" data-c="1">skewX(45°)</button>
+      <button data-b="0.5" data-c="0.5">b = c = 0,5</button>
+      <button data-b="1" data-c="1">b = c = 1</button>
+      <button data-b="1" data-c="-1">b = 1, c = −1</button>
+    </div>
+  </div>
+
+  <p class="legende">Le déterminant a·d − b·c indique par combien l’aire est multipliée. Un petit carreau vaut 10 px, un grand 100 px.</p>
+</main>
+<script src="script.js"></script>
+</body>
+</html>

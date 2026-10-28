@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Six tuiles : grille, cercle, anneau</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <h1>Six tuiles, trois dispositions</h1>
+  <p>Les tuiles sont toutes posées au même endroit, au centre. Seule leur matrice change d’une disposition à l’autre, et le navigateur anime le passage de l’une à l’autre.</p>
+
+  <div class="scene" id="scene" aria-label="Scène contenant les six tuiles">
+    <div class="anneau" id="anneau"></div>
+  </div>
+
+  <div class="choix" role="group" aria-label="Disposition">
+    <button data-mode="grille" aria-pressed="true">Grille 3 × 2</button>
+    <button data-mode="cercle" aria-pressed="false">Cercle 2D</button>
+    <button data-mode="anneau" aria-pressed="false">Anneau 3D</button>
+  </div>
+  <div class="controles">
+    <label class="curseur" id="lblH"><span>Rotation H</span><input type="range" id="h" min="-180" max="180" step="1" value="0"><span class="mono" id="hv">0°</span></label>
+    <label class="curseur" id="lblV"><span>Rotation V</span><input type="range" id="v" min="-90" max="90" step="1" value="-12"><span class="mono" id="vv">−12°</span></label>
+    <label class="curseur" id="lblP"><span>Perspective</span><input type="range" id="p" min="150" max="2000" step="10" value="900"><span class="mono" id="pv">900px</span></label>
+  </div>
+
+  <h2>Le conteneur</h2>
+  <div class="panneau"><span class="mono css" id="cssConteneur"></span></div>
+
+  <h2>Les tuiles</h2>
+  <p id="explication"></p>
+  <div class="panneau"><span class="mono" id="cssTuiles"></span></div>
+</main>
+<script src="script.js"></script>
+</body>
+</html>
